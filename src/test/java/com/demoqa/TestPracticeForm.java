@@ -22,23 +22,30 @@ public class TestPracticeForm {
     @Test
     void fillFormTest() {
 
+        String firstName = "Akim";
+        String lastName = "Mir";
+        String email = "Mir@gmail.ru";
+        String number = "12345678910";
+        String subject = "English";
+        String address = "Some Address 14";
+
         open("/automation-practice-form");
-        $("#firstName").setValue("Akim");
-        $("#lastName").setValue("Mir");
-        $("#userEmail").setValue("Mir@gmail.ru");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(email);
 
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("12345678910");
+        $("#userNumber").setValue(number);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("September");
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__day--017:not(.react-datepicker__day--selected").click();
-        $("#subjectsInput").setValue("English").pressTab();
+        $("#subjectsInput").setValue(subject).pressTab();
         $("#hobbiesWrapper").$(byText("Sports")).click();
 
         $("#uploadPicture").uploadFile(new File("src/test/resources/img/bez-nazvanija.jpeg"));
 
-        $("#currentAddress").setValue("Some Address 14");
+        $("#currentAddress").setValue(address);
 
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
