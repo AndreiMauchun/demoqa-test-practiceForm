@@ -26,6 +26,7 @@ public class TestPracticeForm {
         $("#firstName").setValue("Akim");
         $("#lastName").setValue("Mir");
         $("#userEmail").setValue("Mir@gmail.ru");
+
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("12345678910");
         $("#dateOfBirthInput").click();
@@ -34,13 +35,22 @@ public class TestPracticeForm {
         $(".react-datepicker__day--017:not(.react-datepicker__day--selected").click();
         $("#subjectsInput").setValue("English").pressTab();
         $("#hobbiesWrapper").$(byText("Sports")).click();
+
         $("#uploadPicture").uploadFile(new File("src/test/resources/img/bez-nazvanija.jpeg"));
+
         $("#currentAddress").setValue("Some Address 14");
+
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
+
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
+
         $("#submit").click();
+
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
