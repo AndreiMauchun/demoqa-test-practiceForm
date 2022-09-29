@@ -1,4 +1,4 @@
-package com.demoqa;
+package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,6 +22,10 @@ public class TestPracticeForm {
     @Test
     void fillFormTest() {
 
+        open("/automation-practice-form");
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+
         String firstName = "Akim";
         String lastName = "Mir";
         String email = "Mir@gmail.ru";
@@ -29,11 +33,9 @@ public class TestPracticeForm {
         String subject = "English";
         String address = "Some Address 14";
 
-        open("/automation-practice-form");
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
-
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue(number);
         $("#dateOfBirthInput").click();
@@ -42,13 +44,10 @@ public class TestPracticeForm {
         $(".react-datepicker__day--017:not(.react-datepicker__day--selected").click();
         $("#subjectsInput").setValue(subject).pressTab();
         $("#hobbiesWrapper").$(byText("Sports")).click();
-
         $("#uploadPicture").uploadFile(new File("src/test/resources/img/bez-nazvanija.jpeg"));
 
         $("#currentAddress").setValue(address);
 
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
 
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
@@ -72,16 +71,6 @@ public class TestPracticeForm {
                         text("bez-nazvanija.jpeg"),
                         text("Some Address 14"),
                         text("NCR Delhi"));
-
-
-
-
-
-
-
-
-
-
 
     }
 }
