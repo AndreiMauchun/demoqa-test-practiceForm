@@ -1,6 +1,7 @@
 package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,19 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.demoqa.utils.RandomUtils.*;
 
-public class TestPracticeFormWithTestData {
+public class TestPracticeFormWithFakerTests {
+
+    Faker faker = new Faker();
+    String firstName = faker.name().firstName(); // Emory
+    String lastName = faker.name().lastName(); // Barton
+    String email = faker.internet().emailAddress();
+    String number = faker.phoneNumber().subscriberNumber(10);
+    String subject = "English";
+    String address = faker.address().fullAddress();
+    String day = "17";
+    String month = "September";
+    String year = "1991";
+
 
     @BeforeAll
     static void configure() {
@@ -22,18 +35,6 @@ public class TestPracticeFormWithTestData {
 
     @Test
     void fillFormTest() {
-
-        String firstName = getRandomString(10);
-        String lastName = getRandomString(10);
-        String email = getRandomEmail();
-        String number = getRandomPhone();
-        String subject = "English";
-        String address = getRandomAddress(25);
-        String day = "17";
-        String month = "September";
-        String year = "1991";
-
-
 
         open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
