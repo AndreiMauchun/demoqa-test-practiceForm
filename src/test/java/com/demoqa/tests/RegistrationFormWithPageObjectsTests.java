@@ -34,7 +34,6 @@ public class RegistrationFormWithPageObjectsTests {
 //        capabilities.setCapability("browserVersion", "100.0");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
-
         Configuration.browserCapabilities = capabilities;
     }
 
