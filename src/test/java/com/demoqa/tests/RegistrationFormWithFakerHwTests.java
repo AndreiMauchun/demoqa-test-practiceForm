@@ -4,8 +4,10 @@ import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPages;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+    @Disabled
 public class RegistrationFormWithFakerHwTests {
     RegistrationFormPages registrationFormPages = new RegistrationFormPages();
     Faker faker = new Faker();
