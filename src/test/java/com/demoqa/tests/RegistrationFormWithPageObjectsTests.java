@@ -24,9 +24,6 @@ public class RegistrationFormWithPageObjectsTests {
 
     @BeforeAll
     static void configure() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -34,7 +31,12 @@ public class RegistrationFormWithPageObjectsTests {
 //        capabilities.setCapability("browserVersion", "100.0");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
+
         Configuration.browserCapabilities = capabilities;
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.holdBrowserOpen = true;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
     }
 
     @AfterEach
