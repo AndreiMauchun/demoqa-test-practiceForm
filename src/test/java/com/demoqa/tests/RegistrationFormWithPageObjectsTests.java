@@ -10,6 +10,7 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationFormWithPageObjectsTests {
     RegistrationFormPages registrationFormPages = new RegistrationFormPages();
@@ -24,6 +25,8 @@ public class RegistrationFormWithPageObjectsTests {
 
     @Test
     void fillFormTest() {
+        step("Enter user data", () ->
+        {
         registrationFormPages.openPage()
                 .setFirstName("Akim")
                 .setLastName("Mir")
@@ -37,7 +40,8 @@ public class RegistrationFormWithPageObjectsTests {
                 .setStateAndCity("NCR", "Delhi")
                 .setBirthDate("17", "September", "1991")
                 .setSubmit();
-
+        });
+        step("Checks form is correct", () -> {
         registrationFormPages.checkResultTableVisible()
                 .checkResult("Student Name", "Akim Mir")
                 .checkResult("Student Email", "Mir@gmail.ru")
@@ -49,6 +53,6 @@ public class RegistrationFormWithPageObjectsTests {
                 .checkResult("Picture", "bez-nazvanija.jpeg")
                 .checkResult("Address", "Some Address 14")
                 .checkResult("State and City", "NCR Delhi");
-
+        });
     }
 }
