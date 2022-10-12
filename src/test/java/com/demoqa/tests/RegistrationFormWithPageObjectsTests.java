@@ -20,7 +20,7 @@ public class RegistrationFormWithPageObjectsTests {
     static void configure() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = true;
-        //Configuration.browserSize = "2560 x 1600";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @Test
